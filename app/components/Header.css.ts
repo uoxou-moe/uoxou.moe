@@ -94,7 +94,7 @@ export const styleHamburgerButton = style({
 	color: theme.flavor.chocolate.fg,
 	outline: "none",
 	boxShadow: `${theme.flavor.strawberry.primary} 0px 2px`,
-	transition: "all 0.2s ease-in-out",
+	transition: "all 0.15s ease-in-out",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
@@ -105,6 +105,7 @@ export const styleHamburgerButton = style({
 			backgroundColor: theme.flavor.strawberry.muted,
 			borderColor: theme.flavor.strawberry.primary,
 			outline: "none",
+			color: theme.flavor.strawberry.fg,
 		},
 		"&:active": {
 			backgroundColor: theme.flavor.strawberry.emphasaized,
