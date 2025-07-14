@@ -7,7 +7,8 @@ export const styleHeader = style({
 	alignItems: "center",
 	backgroundColor: theme.flavor.strawberry.base,
 	fontFamily: "Segoe UI, sans-serif",
-	color: theme.flavor.chocolate.fg
+	color: theme.flavor.chocolate.fg,
+	borderBottom: `1px solid ${theme.flavor.strawberry.emphasaized}`,
 });
 
 export const styleContainer = style({
