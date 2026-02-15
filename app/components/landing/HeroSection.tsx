@@ -1,11 +1,23 @@
 import Matter from "matter-js";
 import { useEffect, useRef, type JSX } from "react";
-import { styleContainer } from "./HeroSection.css";
+import { H, SectionSContent } from "shirayuki-twinkle";
+import { styleContainer, styleContentSection, styleIntro, styleTitle } from "./HeroSection.css";
 
 export function HeroSection(): JSX.Element {
 	return (
 		<div className={`${styleContainer}`}>
 			<BackgroundCanvas />
+
+			<SectionSContent className={`${styleContentSection}`}>
+				<p className={`${styleIntro}`}>ようこそ、不思議の国へ。 We are</p>
+
+				<H className={`${styleTitle}`}>UoxoU.moe</H>
+
+				<p>
+					Webのこと、短歌のこと。<br />
+					技術の力でどんなことでも叶えます。
+				</p>
+			</SectionSContent>
 		</div>
 	);
 }
@@ -134,6 +146,6 @@ function BackgroundCanvas(): JSX.Element {
 	}, []);
 
 	return (
-		<div ref={ref} style={{ width: "100%", height: "100%" }}></div>
+		<div ref={ref} style={{ inset: 0, position: "absolute", }}></div>
 	);
 }
