@@ -1,5 +1,4 @@
 import Matter from "matter-js";
-import type { Graphics } from "pixi.js";
 import { useEffect, useRef, type JSX } from "react";
 import { styleContainer } from "./HeroSection.css";
 
@@ -12,85 +11,125 @@ export function HeroSection(): JSX.Element {
 }
 
 function BackgroundCanvas(): JSX.Element {
-	// const { world, createBody, createDynamicBody, bodies } = usePlanckWorld();
-	const engine = useRef(Matter.Engine.create({
-	}));
+	const engine = useRef(Matter.Engine.create({}));
 	const ref = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const runner = (async () => {
-			const { Application, Graphics } = await import("pixi.js");
-			const SCALE = 10;
+		(async () => {
+			const { Application, Graphics, Text, } = await import("pixi.js");
 
 			const app = new Application();
 
-			await app.init({ resizeTo: ref.current!, backgroundColor: 0x000000, antialias: true });
+			await app.init({ resizeTo: ref.current!, backgroundAlpha: 0, antialias: true });
 
 			ref.current!.appendChild(app.canvas);
 
-			var ground = Matter.Bodies.rectangle(10, 100, 80, 10, { isStatic: true });
-			Matter.World.add(engine.current.world, ground);
+			function createMobile(xOffset: number, length: number, ornamentChar: string = "✧") {
+				xOffset = app.renderer.width - xOffset;
+				var group = Matter.Body.nextGroup(true);
 
-			const groundGraphic = new Graphics();
-			groundGraphic.position.set(10, 100);
-			groundGraphic.moveTo(-40.0 * SCALE, 0);
-			groundGraphic.lineTo(40.0 * SCALE, 0);
-			groundGraphic.stroke(0xffffff);
-			app.stage.addChild(groundGraphic);
-
-			var y = 25.0;
-			var xOffset = 15.0;
-			var prevBody = ground;
-			for (var i = 0; i < 30; ++i) {
-				var body = Matter.Bodies.rectangle(20 + i, 2, 1.2, 0.25, {
-					isStatic: false,
+				const container = Matter.Composite.create();
+				const rope = Matter.Composites.stack(xOffset, 10, 1, length, 0, 0, (x: number, y: number) => {
+					return Matter.Bodies.rectangle(x, y, 5, 10, {
+						density: 0.005,
+						frictionAir: 0.05,
+						collisionFilter: { group },
+						chamfer: {
+							radius: 5,
+						}
+					});
 				});
-				const constraint = Matter.Constraint.create({
-					bodyA: prevBody,
-					bodyB: body,
-					pointA: { x: xOffset + i, y: y },
-					pointB: { x: 0, y: 0 },
-					length: 0.01,
-					damping: 0.01,
-					stiffness: 0.05,
-				})
-				Matter.World.add(engine.current.world, body);
-				// Matter.World.add(engine.current.world, constraint);
 
-				const rect = new Graphics();
-				rect.rect(-0.6 * SCALE, (-0.125 * SCALE), 1.2 * SCALE, 0.25 * SCALE);
-				rect.stroke(0xffffff);
-				app.stage.addChild(rect);
+				rope.bodies.forEach((body) => {
+					const ropeDash = new Graphics({})
+						.moveTo(0, -5)
+						.lineTo(0, 5)
+						.stroke({
+							width: 3,
+							color: 0xFFC1E3,
+						});
+					app.stage.addChild(ropeDash);
 
-				body.plugin = {
-					graphic: rect,
-				}
+					body.plugin = {
+						graphic: ropeDash,
+					}
 
-				prevBody = body;
-			}
+					Matter.Events.on(engine.current, "afterUpdate", () => {
+						const { x, y } = body.position;
+						ropeDash.position.set(x, y);
+						ropeDash.rotation = body.angle;
+					});
+				});
 
-			app.ticker.add((ticker) => {
-				engine.current.world.bodies.forEach((body) => {
-					const graphic = body.plugin?.graphic as Graphics | undefined;
-					const pos = body.position;
+				Matter.Composites.chain(rope, 0, .5, 0, -.5, {
+					stiffness: 0.8,
+					length: 5,
+				});
 
-					if (graphic) {
-						graphic.position.set(pos.x * SCALE, (pos.y * SCALE));
-						graphic.rotation = body.angle;
+				Matter.Composite.add(container, rope);
+
+				const text = Matter.Bodies.rectangle(xOffset + (Math.random() * 60 - 30), 20, 40, 40, {
+					collisionFilter: { group },
+				});
+
+				const textGraphic = new Text({
+					text: ornamentChar,
+					style: {
+						fontSize: 60,
+						fill: 0x514440,
 					}
 				});
+				textGraphic.anchor.set(0.5);
+				app.stage.addChild(textGraphic);
+
+				Matter.Events.on(engine.current, "afterUpdate", () => {
+					const { x, y } = text.position;
+					textGraphic.position.set(x, y);
+					textGraphic.rotation = text.angle;
+				});
+
+				Matter.Composite.add(container, text);
+				Matter.Composite.add(container, Matter.Constraint.create({
+					bodyA: text,
+					bodyB: rope.bodies[length - 1],
+					pointA: { x: 0, y: -19 },
+					pointB: { x: 0, y: 4.5 },
+					stiffness: 0.1,
+					length: 5,
+				}));
+
+				Matter.World.add(engine.current.world, Matter.Constraint.create({
+					bodyA: rope.bodies[0],
+					pointA: { x: 0, y: -4.5 },
+					pointB: { x: xOffset, y: 0 },
+					stiffness: 0.99,
+					length: 1,
+				}));
+
+				Matter.World.add(engine.current.world, container);
+			}
+
+			const FIXED = 1000 / 240; // ms
+			let accumulator = 0;
+			const timeScale = 2.4;
+
+			app.ticker.add((ticker) => {
+				accumulator += ticker.deltaMS * timeScale;
+
+				while (accumulator >= FIXED) {
+					Matter.Engine.update(engine.current, FIXED);
+					accumulator -= FIXED;
+				}
 			});
 
-			Matter.Events.on(engine.current, "afterUpdate", (b) => {
-				console.log("after update", b);
-			});
 
-			return Matter.Runner.run(engine.current);
+			createMobile(60, 10, "☆");
+			createMobile(120, 15);
 		})();
 
 		return () => {
-			engine.current && Matter.World.clear(engine.current.world, false);
-			runner.then((runner) => { Matter.Runner.stop(runner); });
+			Matter.World.clear(engine.current.world, false);
+			Matter.Engine.clear(engine.current);
 		};
 	}, []);
 
