@@ -9,6 +9,6 @@ globalStyle("*", {
 
 globalStyle("html, body", {
 	height: "100%",
-	fontFamily: "Segoe UI, sans-serif",
+	fontFamily: "Lexend Variable, Noto Sans JP, sans-serif",
 	backgroundColor: theme.flavor.strawberry.base,
 });

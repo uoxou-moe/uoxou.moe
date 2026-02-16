@@ -1,7 +1,7 @@
 import Matter from "matter-js";
 import { useEffect, useRef, type JSX } from "react";
 import { H, SectionSContent } from "shirayuki-twinkle";
-import { styleContainer, styleContentSection, styleIntro, styleTitle } from "./HeroSection.css";
+import { styleContainer, styleContentSection, styleIntro, styleMessage, styleTitle } from "./HeroSection.css";
 
 export function HeroSection(): JSX.Element {
 	return (
@@ -13,7 +13,7 @@ export function HeroSection(): JSX.Element {
 
 				<H className={`${styleTitle}`}>UoxoU.moe</H>
 
-				<p>
+				<p className={`${styleMessage}`}>
 					Webのこと、短歌のこと。<br />
 					技術の力でどんなことでも叶えます。
 				</p>
@@ -89,6 +89,7 @@ function BackgroundCanvas(): JSX.Element {
 					style: {
 						fontSize: 60,
 						fill: 0x514440,
+						fontFamily: "Noto Sans JP",
 					}
 				});
 				textGraphic.anchor.set(0.5);

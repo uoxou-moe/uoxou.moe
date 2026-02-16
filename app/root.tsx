@@ -11,6 +11,8 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import "~/styles/global.css";
 
+import "@fontsource-variable/lexend";
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
