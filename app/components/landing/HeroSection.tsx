@@ -36,7 +36,7 @@ function BackgroundCanvas(): JSX.Element {
 
 			ref.current!.appendChild(app.canvas);
 
-			function createMobile(xOffset: number, length: number, ornamentChar: string = "✧") {
+			function createMobile(xOffset: number, length: number, ornamentChar: string, ornamentAngle: number, ornamentSize: number = 64) {
 				xOffset = app.renderer.width - xOffset;
 				var group = Matter.Body.nextGroup(true);
 
@@ -87,7 +87,7 @@ function BackgroundCanvas(): JSX.Element {
 				const textGraphic = new Text({
 					text: ornamentChar,
 					style: {
-						fontSize: 60,
+						fontSize: ornamentSize,
 						fill: 0x514440,
 						fontFamily: "Noto Sans JP",
 					}
@@ -99,13 +99,14 @@ function BackgroundCanvas(): JSX.Element {
 					const { x, y } = text.position;
 					textGraphic.position.set(x, y);
 					textGraphic.rotation = text.angle;
+					textGraphic.angle += ornamentAngle;
 				});
 
 				Matter.Composite.add(container, text);
 				Matter.Composite.add(container, Matter.Constraint.create({
 					bodyA: text,
 					bodyB: rope.bodies[length - 1],
-					pointA: { x: 0, y: -19 },
+					pointA: { x: 0, y: -4 },
 					pointB: { x: 0, y: 4.5 },
 					stiffness: 0.1,
 					length: 5,
@@ -135,9 +136,11 @@ function BackgroundCanvas(): JSX.Element {
 				}
 			});
 
-
-			createMobile(60, 10, "☆");
-			createMobile(120, 15);
+			createMobile(160, 10, "☆", -15);
+			createMobile(310, 18, "⁺☽", 25, 96);
+			createMobile(400, 15, "✩", 15);
+			createMobile(620, 7, "✩", -30);
+			createMobile(740, 11, "✧*", 18);
 		})();
 
 		return () => {
