@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
 export const styleCommonLayout = style({
-	
+	width: "100%",
 });

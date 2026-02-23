@@ -9,9 +9,6 @@ export default function CommonLayout() {
 			<main>
 				<Outlet />
 			</main>
-			<footer>
-				<p>Footer content</p>
-			</footer>
 		</div>
 	);
 }
