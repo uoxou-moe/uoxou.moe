@@ -7,7 +7,7 @@ export function Header() {
 	return (
 		<header className={`${styleHeader}`}>
 			<div className={`${styleContainer}`}>
-				<img className={`${styleLogo}`} src={logo} alt="Logo" />
+				{/* <img className={`${styleLogo}`} src={logo} alt="Logo" /> */}
 				<nav className={`${styleNav}`}>
 					<ul className={`${styleNavUl}`}>
 						<li className={`${styleNavItem}`}>
