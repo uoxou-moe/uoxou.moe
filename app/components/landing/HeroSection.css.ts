@@ -17,6 +17,9 @@ export const styleContentSection = style({
 	marginInline: "auto",
 	position: "relative",
 	zIndex: 1,
+	display: "flex",
+	flexDirection: "column",
+	gap: 24,
 });
 
 export const styleIntro = style({
@@ -29,10 +32,15 @@ export const styleTitle = style({
 	fontWeight: 400,
 	lineHeight: 1,
 	color: theme.flavor.chocolate.fg,
-	marginBottom: 24,
 });
 
 export const styleMessage = style({
 	fontSize: "1.25rem",
 	color: theme.flavor.chocolate.fg,
+});
+
+export const styleButtonsContainer = style({
+	display: "flex",
+	flexDirection: "row",
+	gap: 12,
 });

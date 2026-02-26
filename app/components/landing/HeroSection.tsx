@@ -3,7 +3,8 @@ import Matter from "matter-js";
 import { Container, Text } from "pixi.js";
 import { useEffect, useRef, useState, type JSX } from "react";
 import { H, SectionSContent } from "shirayuki-twinkle";
-import { styleContainer, styleContentSection, styleIntro, styleMessage, styleTitle } from "./HeroSection.css";
+import { Button } from "~/components/common/Button";
+import { styleButtonsContainer, styleContainer, styleContentSection, styleIntro, styleMessage, styleTitle } from "./HeroSection.css";
 
 export function HeroSection(): JSX.Element {
 	return (
@@ -20,6 +21,16 @@ export function HeroSection(): JSX.Element {
 					Webのこと、短歌のこと。<br />
 					技術の力でどんなことでも叶えます。
 				</p>
+
+				<div className={`${styleButtonsContainer}`}>
+					<Button>
+						私たちについて
+					</Button>
+
+					<Button variant="secondary">
+						これまでの成果
+					</Button>
+				</div>
 			</SectionSContent>
 		</div>
 	);

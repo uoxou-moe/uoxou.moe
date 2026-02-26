@@ -79,6 +79,7 @@ export const theme = createGlobalTheme(":root", {
 			emphasaized: flavors.strawberry[300],
 			base: flavors.strawberry[50],
 			solid: flavors.strawberry[600],
+			impact: flavors.strawberry[700],
 			fg: flavors.strawberry[800],
 		},
 		ramune: {

@@ -9,6 +9,9 @@ globalStyle("*", {
 
 globalStyle("html, body", {
 	height: "100%",
-	fontFamily: "Lexend Variable, Noto Sans JP, sans-serif",
 	backgroundColor: theme.flavor.strawberry.base,
+});
+
+globalStyle("body, button", {
+	fontFamily: "Lexend Variable, Noto Sans JP, sans-serif",
 });
