@@ -2,13 +2,14 @@ import { Application, useExtend, useTick } from "@pixi/react";
 import Matter from "matter-js";
 import { Container, Text } from "pixi.js";
 import { useEffect, useRef, useState, type JSX } from "react";
+import { Link } from "react-router";
 import { H, SectionSContent } from "shirayuki-twinkle";
 import { Button } from "~/components/common/Button";
 import { styleButtonsContainer, styleContainer, styleContentSection, styleIntro, styleMessage, styleTitle } from "./HeroSection.css";
 
-export function HeroSection(): JSX.Element {
+export function HeroSection({ ...props }: React.ComponentPropsWithRef<"div">): JSX.Element {
 	return (
-		<div className={`${styleContainer}`}>
+		<div {...props} className={`${styleContainer}`}>
 			<BackgroundCanvas />
 			<UsagiCanvas />
 
@@ -23,12 +24,16 @@ export function HeroSection(): JSX.Element {
 				</p>
 
 				<div className={`${styleButtonsContainer}`}>
-					<Button>
-						私たちについて
+					<Button asChild>
+						<Link to={"#services"}>
+							こんなことができます
+						</Link>
 					</Button>
 
-					<Button variant="secondary">
-						これまでの成果
+					<Button variant="secondary" asChild>
+						<Link to={"#works"}>
+							これまでの実績
+						</Link>
 					</Button>
 				</div>
 			</SectionSContent>

@@ -1,6 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap");
+@import "tailwindcss";
+
+@theme {
+	--color-bloom-50: #fef1f8;
+	--color-bloom-100: #fee5f3;
+	--color-bloom-200: #ffc1e3;
+	--color-bloom-300: #ffa1d2;
+	--color-bloom-400: #ff66b3;
+	--color-bloom-500: #fb3995;
+	--color-bloom-600: #eb1771;
+	--color-bloom-700: #cd0957;
+	--color-bloom-800: #a90b48;
+	--color-bloom-900: #8d0e3f;
+	--color-bloom-950: #570021;
+
+	--color-fluffy-50: #fff3f9;
+	--color-fluffy-100: #ffeaf5;
+	--color-fluffy-200: #ffdeef;
+	--color-fluffy-300: #ffd1ea;
+	--color-fluffy-400: #ffbfe1;
+	--color-fluffy-500: #ffc1e3;
+	--color-fluffy-600: #ff99cc;
+	--color-fluffy-700: #ff6baf;
+	--color-fluffy-800: #ff3f93;
+	--color-fluffy-900: #ff1d7f;
+
+	--color-eyelash-50: #fbfbf8;
+	--color-eyelash-100: #f6f6f3;
+	--color-eyelash-200: #e9e3e2;
+	--color-eyelash-300: #d9d1ce;
+	--color-eyelash-400: #b7a8a3;
+	--color-eyelash-500: #7f6c65;
+	--color-eyelash-600: #5d5148;
+	--color-eyelash-700: #493d37;
+	--color-eyelash-800: #2c2221;
+	--color-eyelash-900: #1f1714;
+	--color-eyelash-950: #0e0807;
+
+	--font-decol: "Kaisei Decol", sans-serif;
+	--font-sans: "Lexend Variable", "Noto Sans JP", sans-serif;
+}
+
+@layer base {
+	:root {
+		text-autospace: normal;
+		scroll-behavior: smooth;
+	}
+}
+
 html,
 body {
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+	@media (prefers-color-scheme: dark) {
+		color-scheme: dark;
+	}
 }

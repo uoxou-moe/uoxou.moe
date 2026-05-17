@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -126,25 +126,24 @@ const btnOn: CSSProperties = {
 // ── Layout ───────────────────────────────────────────────
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const [demoMode, setDemoMode] = useState(true);
-  const originalTextList = useRef<OriginalEntry[]>([]);
+  // const [demoMode, setDemoMode] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
+  // const originalTextList = useRef<OriginalEntry[]>([]);
 
-  const toggleDemo = useCallback(() => {
-    setDemoMode((prev) => !prev);
-  }, []);
+  // const toggleDemo = useCallback(() => {
+  //   setDemoMode((prev) => !prev);
+  // }, []);
 
-  useEffect(() => {
-    if (demoMode) {
-      document.documentElement.setAttribute("data-demo-mode", "true");
-      const timer = setTimeout(() => {
-        replaceTextWithRunes(document.body, originalTextList.current);
-      }, 50);
-      return () => clearTimeout(timer);
-    } else {
-      document.documentElement.removeAttribute("data-demo-mode");
-      restoreOriginalText(originalTextList.current);
-    }
-  }, [demoMode]);
+  // useLayoutEffect(() => {
+  //   if (demoMode) {
+  //     document.documentElement.setAttribute("data-demo-mode", "true");
+  //     replaceTextWithRunes(document.body, originalTextList.current);
+  //     setLoaded(true);
+  //   } else {
+  //     document.documentElement.removeAttribute("data-demo-mode");
+  //     restoreOriginalText(originalTextList.current);
+  //   }
+  // }, [demoMode]);
 
   return (
     <html lang="en">
@@ -157,14 +156,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <button
+        {/* <button
           data-demo-btn
           style={demoMode ? btnOn : btnOff}
           onClick={toggleDemo}
           type="button"
         >
           {demoMode ? "✦ Demo OFF" : "✦ Demo"}
-        </button>
+        </button> */}
         <ScrollRestoration />
         <Scripts />
       </body>
