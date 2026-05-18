@@ -17,4 +17,11 @@ function MainTitle({ className, children, ...props }: { className?: string } & C
 	);
 }
 
+function MainContent({ className, ...props }: { className?: string } & ComponentPropsWithRef<"div">): JSX.Element {
+	return (
+		<div {...props} className={cn("text-lg text-eyelash-600", className)} />
+	);
+}
+
 Main.Title = MainTitle;
+Main.Content = MainContent;

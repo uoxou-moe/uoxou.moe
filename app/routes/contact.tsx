@@ -11,7 +11,9 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
 	return (
 		<Main>
-			<Main.Title>お問い合わせ</Main.Title>
+			<Main.Content>
+				
+			</Main.Content>
 		</Main>
 	);
 }
