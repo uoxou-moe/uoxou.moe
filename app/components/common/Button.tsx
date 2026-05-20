@@ -4,7 +4,7 @@ import type { ComponentPropsWithRef } from "react";
 import { cn } from "~/utils/cn";
 
 const variants = cva(
-	"w-fit h-10 inline-flex items-center justify-center px-6 rounded-md border transition-all duration-150 ease-in-out text-base shadow-[0_2px_0] active:translate-y-0.5 active:shadow-[0_0_0]",
+	"w-fit h-10 inline-flex items-center justify-center px-6 rounded-md border transition-all duration-150 ease-in-out text-base shadow-[0_2px_0] -translate-y-0.5 active:translate-y-0 active:shadow-[0_0_0]",
 	{
 		variants: {
 			variant: {

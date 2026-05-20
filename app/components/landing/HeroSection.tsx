@@ -18,7 +18,7 @@ export function HeroSection({ ...props }: React.ComponentPropsWithRef<"div">): J
 			<SectionSContent className={`${styleContentSection}`}>
 				<p className={`${styleIntro}`}>ようこそ、不思議の国へ。 We are</p>
 
-				<H className={`${styleTitle}`}>UoxoU.moe</H>
+				<H className={`${styleTitle}`}>꒰ UoxoU ꒱</H>
 
 				<p className={`${styleMessage}`}>
 					Webのこと、短歌のこと。<br />
