@@ -49,7 +49,13 @@ export function MembersSection({ ...props }: Omit<ComponentPropsWithRef<typeof S
 							</MemberCard.Name>
 
 							<MemberCard.Bio>
-								バックエンドエンジニア。Node.jsとPythonが得意。
+								<p>
+									アプリケーション開発や、ネットワーク・脆弱性調査に関心があります。
+									堅実で拡張しやすいシステム開発を目指しています。
+								</p>
+								<p>
+									好きなもの：Go・WebRTC
+								</p>
 							</MemberCard.Bio>
 						</MemberCard.Content>
 					</MemberCard>
