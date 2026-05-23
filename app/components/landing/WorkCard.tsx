@@ -16,7 +16,7 @@ function WorkCardCover({ asChild, ...props }: { asChild?: boolean } & ComponentP
 	return (
 		<Comp
 			{...props}
-			className={clsx(props.className, "w-full h-42 rounded-lg border border-fluffy-500 bg-fluffy-50")}
+			className={clsx(props.className, "w-full h-42 rounded-lg border border-fluffy-500 bg-fluffy-50 object-contain")}
 		/>
 	);
 }
@@ -25,7 +25,7 @@ function WorkCardLabel({ asChild, ...props }: { asChild?: boolean } & ComponentP
 	const Comp = asChild ? Slot.Root : "div";
 
 	return (
-		<Comp {...props} className={clsx(props.className, "w-full h-full flex flex-col px-2")} />
+		<Comp {...props} className={clsx(props.className, "w-full flex-1 flex flex-col px-2")} />
 	);
 }
 

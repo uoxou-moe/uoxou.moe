@@ -1,4 +1,6 @@
 import type { ComponentPropsWithRef, JSX } from "react";
+import flavorCover from "~/assets/flavor-cover.png";
+import nicomadoCover from "~/assets/nicomado-cover.svg";
 import { Section } from "~/components/landing/Section";
 import { WorkCard } from "./WorkCard";
 
@@ -13,24 +15,28 @@ export function WorksSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 
 			<Section.Content>
 				<div className="w-full flex flex-row justify-center gap-8">
-					<WorkCard>
-						<WorkCard.Cover src="https://picsum.photos/320/240" alt="Work 1" />
-						<WorkCard.Label>
-							<WorkCard.Title>短歌アプリ「Flavor」</WorkCard.Title>
-							<WorkCard.Description>
-								短歌を作成・共有できるアプリ。React NativeとFirebaseを使用して開発。
-							</WorkCard.Description>
-						</WorkCard.Label>
+					<WorkCard asChild>
+						<a className="hover:bg-fluffy-200 active:bg-fluffy-300 active:translate-y-1 active:shadow-none transition-all" href="https://x.com/flavor_tanka" target="_blank" rel="noopener noreferrer">
+							<WorkCard.Cover className="bg-white" src={flavorCover} alt="短歌アプリ「Flavor」のロゴアイコン。" />
+							<WorkCard.Label>
+								<WorkCard.Title>短歌アプリ「Flavor」</WorkCard.Title>
+								<WorkCard.Description>
+									あなたの好きな短歌に必ず出会える、短歌配信アプリです。
+								</WorkCard.Description>
+							</WorkCard.Label>
+						</a>
 					</WorkCard>
 
-					<WorkCard>
-						<WorkCard.Cover src="https://picsum.photos/320/240" alt="Work 2" />
-						<WorkCard.Label>
-							<WorkCard.Title>nicomado</WorkCard.Title>
-							<WorkCard.Description>
-								複数の異なるプラットフォームの動画・配信を同時に視聴できるウェブアプリです。
-							</WorkCard.Description>
-						</WorkCard.Label>
+					<WorkCard asChild>
+						<a className="hover:bg-fluffy-200 active:bg-fluffy-300 active:translate-y-1 active:shadow-none transition-all" href="https://nicomado.com" target="_blank" rel="noopener noreferrer">
+							<WorkCard.Cover src={nicomadoCover} alt="「nicomado」のロゴアイコン。" />
+							<WorkCard.Label>
+								<WorkCard.Title>nicomado</WorkCard.Title>
+								<WorkCard.Description>
+									複数の異なるプラットフォームの動画・配信を同時に視聴できるウェブアプリです。
+								</WorkCard.Description>
+							</WorkCard.Label>
+						</a>
 					</WorkCard>
 				</div>
 			</Section.Content>
