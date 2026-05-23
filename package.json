@@ -16,8 +16,6 @@
     "@fontsource-variable/lexend": "^5.2.11",
     "@icons-pack/react-simple-icons": "^13.13.0",
     "@pixi/react": "^8.0.5",
-    "@react-router/node": "^7.5.3",
-    "@react-router/serve": "^7.5.3",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-form": "^1.32.0",
     "class-variance-authority": "^0.7.1",
