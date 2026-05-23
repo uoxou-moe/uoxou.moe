@@ -9,10 +9,10 @@ export function Section({ className, ...props }: { className?: string } & Compon
 
 function SectionTitle({ className, children, ...props }: { className?: string } & ComponentPropsWithRef<"h2">): JSX.Element {
 	return (
-		<h2 {...props} className={cn("text-4xl text-eyelash-700 font-decol relative", className)}>
-			<span className="whitespace-pre mr-2 text-3xl">:✧˖(ෆ˘͈ ᵕ˘͈)</span>
+		<h2 {...props} className={cn("text-4xl max-md:text-3xl text-eyelash-700 font-decol relative", className)}>
+			<span className="whitespace-pre mr-2 text-3xl max-md:hidden">:✧˖(ෆ˘͈ ᵕ˘͈)</span>
 			{children}
-			<span className="whitespace-pre ml-2 text-3xl">(˘͈ᵕ ˘͈ෆ)✧˖°:</span>
+			<span className="whitespace-pre ml-2 text-3xl max-md:hidden">(˘͈ᵕ ˘͈ෆ)✧˖°:</span>
 		</h2>
 	);
 }

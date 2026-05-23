@@ -8,6 +8,7 @@ export function UsagiCanvas(): JSX.Element {
 	const ref = useRef<HTMLDivElement>(null);
 	const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 	useExtend({ Container, });
+	const [m, setM] = useState(window.matchMedia("(max-width: 768px)").matches);
 
 	return (
 		<div ref={ref} style={{ inset: 0, marginInline: "auto", position: "absolute", maxWidth: "1200px", overflowX: "visible", }} >
@@ -21,8 +22,9 @@ export function UsagiCanvas(): JSX.Element {
 				});
 			}}>
 				<pixiContainer
-					x={Math.sin(mousePos.x / dimension.width) * -20}
-					y={Math.sin(mousePos.y / dimension.height) * -20}
+					x={m ? dimension.width - 160 : Math.sin(mousePos.x / dimension.width) * -20}
+					y={m ? 280 : Math.sin(mousePos.y / dimension.height) * -20}
+					scale={m ? 0.5 : 1}
 				>
 					<UsachanText x={dimension.width - 960} y={dimension.height - 140} />
 
@@ -125,6 +127,7 @@ function UsagiStar({ x, y, rotDirec }: { x: number, y: number, rotDirec?: number
 export function BackgroundCanvas(): JSX.Element {
 	const engine = useRef(Matter.Engine.create({}));
 	const ref = useRef<HTMLDivElement>(null);
+	const [mediaQuery, setMediaQuery] = useState(window.matchMedia("(min-width: 768px)"));
 
 	useEffect(() => {
 		(async () => {
@@ -257,7 +260,9 @@ export function BackgroundCanvas(): JSX.Element {
 		};
 	}, []);
 
-	return (
+	return mediaQuery.matches ? (
 		<div ref={ref} style={{ inset: 0, marginInline: "auto", position: "absolute", maxWidth: "1400px", overflowX: "visible", }}></div>
+	) : (
+		<></>
 	);
 }

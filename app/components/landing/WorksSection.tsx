@@ -14,7 +14,7 @@ export function WorksSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 			</Section.Title>
 
 			<Section.Content>
-				<div className="w-full flex flex-row justify-center gap-8">
+				<div className="w-full flex flex-row justify-center gap-8 max-md:flex-col max-md:items-center">
 					<WorkCard asChild>
 						<a className="hover:bg-fluffy-200 active:bg-fluffy-300 active:translate-y-1 active:shadow-none transition-all" href="https://x.com/flavor_tanka" target="_blank" rel="noopener noreferrer">
 							<WorkCard.Cover className="bg-white" src={flavorCover} alt="短歌アプリ「Flavor」のロゴアイコン。" />

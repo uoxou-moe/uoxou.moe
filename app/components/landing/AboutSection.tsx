@@ -17,9 +17,9 @@ export function AboutSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 				<p className="text-base text-eyelash-600">
 					私たちは、技術と創造力を駆使して、革新的なプロジェクトを生み出すことができます。フロントエンドからバックエンドまで、幅広い技術スタックを活用して、ユーザーにとって魅力的で使いやすいアプリケーションを開発します。
 				</p>
-				<div className="w-full h-140 flex flex-row mt-8">
-					<div className="relative w-1/4">
-						<AboutCard className="absolute top-0 left-1/2 transform -translate-x-1/2">
+				<div className="w-full h-140 flex flex-row mt-8 max-md:flex-col max-md:h-auto max-md:gap-6 max-md:items-center">
+					<div className="relative w-1/4 max-md:w-fit max-md:h-fit">
+						<AboutCard className="absolute top-0 left-1/2 transform -translate-x-1/2 max-md:static max-md:translate-x-0">
 							<AboutCard.Number>
 								1
 							</AboutCard.Number>
@@ -36,8 +36,8 @@ export function AboutSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 							</AboutCard.Description>
 						</AboutCard>
 					</div>
-					<div className="relative w-1/4">
-						<AboutCard className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+					<div className="relative w-1/4 max-md:w-fit max-md:h-fit">
+						<AboutCard className="absolute bottom-0 left-1/2 transform -translate-x-1/2 max-md:static max-md:translate-x-0">
 							<AboutCard.Number>
 								2
 							</AboutCard.Number>
@@ -54,8 +54,8 @@ export function AboutSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 							</AboutCard.Description>
 						</AboutCard>
 					</div>
-					<div className="relative w-1/4">
-						<AboutCard className="absolute top-0 left-1/2 transform -translate-x-1/2">
+					<div className="relative w-1/4 max-md:w-fit max-md:h-fit">
+						<AboutCard className="absolute top-0 left-1/2 transform -translate-x-1/2 max-md:static max-md:translate-x-0">
 							<AboutCard.Number>
 								3
 							</AboutCard.Number>
@@ -69,8 +69,8 @@ export function AboutSection({ ...props }: Omit<ComponentPropsWithRef<typeof Sec
 							</AboutCard.Description>
 						</AboutCard>
 					</div>
-					<div className="relative w-1/4">
-						<AboutCard className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+					<div className="relative w-1/4 max-md:w-fit max-md:h-fit">
+						<AboutCard className="absolute bottom-0 left-1/2 transform -translate-x-1/2 max-md:static max-md:translate-x-0">
 							<AboutCard.Number>
 								4
 							</AboutCard.Number>

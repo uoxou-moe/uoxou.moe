@@ -13,7 +13,7 @@ export function MembersSection({ ...props }: Omit<ComponentPropsWithRef<typeof S
 			</Section.Title>
 
 			<Section.Content>
-				<div className="w-full flex flex-row justify-center gap-8">
+				<div className="w-full flex flex-row justify-center gap-8 max-md:flex-col max-md:items-center">
 					<MemberCard>
 						<MemberCard.Icon>
 							<span>⩌   ̫ ⩌</span>

@@ -14,17 +14,17 @@ export function Header() {
 						<li className="flex h-full items-center justify-center">
 							<HeaderNavItem to="/" end>ホーム</HeaderNavItem>
 						</li>
-						<li className="flex h-full items-center justify-center">
+						<li className="flex h-full items-center justify-center max-md:hidden">
 							<Link className="flex h-full w-full items-center justify-center text-[0.9375rem] font-medium text-current no-underline transition-colors hover:text-fluffy-800 focus-visible:outline-none focus-visible:text-fluffy-800" to="/#services">
 								こんなことができます
 							</Link>
 						</li>
-						<li className="flex h-full items-center justify-center">
+						<li className="flex h-full items-center justify-center max-md:hidden">
 							<Link className="flex h-full w-full items-center justify-center text-[0.9375rem] font-medium text-current no-underline transition-colors hover:text-fluffy-800 focus-visible:outline-none focus-visible:text-fluffy-800" to="/#works">
 								これまでの実績
 							</Link>
 						</li>
-						<li className="flex h-full items-center justify-center">
+						<li className="flex h-full items-center justify-center max-md:hidden">
 							<Link className="flex h-full w-full items-center justify-center text-[0.9375rem] font-medium text-current no-underline transition-colors hover:text-fluffy-800 focus-visible:outline-none focus-visible:text-fluffy-800" to="/#members">
 								メンバー
 							</Link>
