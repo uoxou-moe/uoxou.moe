@@ -1,0 +1,10 @@
+html,
+body {
+	height: 100%;
+	background-color: #fff3f9;
+}
+
+body,
+button {
+	font-family: "Lexend Variable", "Noto Sans JP", sans-serif;
+}

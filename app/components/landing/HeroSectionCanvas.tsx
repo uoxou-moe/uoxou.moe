@@ -1,6 +1,6 @@
 import { Application, useExtend, useTick } from "@pixi/react";
 import Matter from "matter-js";
-import { Container, Text, } from "pixi.js";
+import { Container, Application as PixiApplication, Text, } from "pixi.js";
 import { useEffect, useRef, useState, type JSX } from "react";
 
 export function UsagiCanvas(): JSX.Element {
@@ -8,7 +8,12 @@ export function UsagiCanvas(): JSX.Element {
 	const ref = useRef<HTMLDivElement>(null);
 	const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 	useExtend({ Container, });
-	const [m, setM] = useState(window.matchMedia("(max-width: 768px)").matches);
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const m = window.matchMedia("(max-width: 768px)").matches;
+		setIsMobile(m);
+	}, []);
 
 	return (
 		<div ref={ref} style={{ inset: 0, marginInline: "auto", position: "absolute", maxWidth: "1200px", overflowX: "visible", }} >
@@ -22,9 +27,9 @@ export function UsagiCanvas(): JSX.Element {
 				});
 			}}>
 				<pixiContainer
-					x={m ? dimension.width - 160 : Math.sin(mousePos.x / dimension.width) * -20}
-					y={m ? 280 : Math.sin(mousePos.y / dimension.height) * -20}
-					scale={m ? 0.5 : 1}
+					x={isMobile ? dimension.width - 160 : Math.sin(mousePos.x / dimension.width) * -20}
+					y={isMobile ? 280 : Math.sin(mousePos.y / dimension.height) * -20}
+					scale={isMobile ? 0.5 : 1}
 				>
 					<UsachanText x={dimension.width - 960} y={dimension.height - 140} />
 
@@ -127,13 +132,15 @@ function UsagiStar({ x, y, rotDirec }: { x: number, y: number, rotDirec?: number
 export function BackgroundCanvas(): JSX.Element {
 	const engine = useRef(Matter.Engine.create({}));
 	const ref = useRef<HTMLDivElement>(null);
-	const [mediaQuery, setMediaQuery] = useState(window.matchMedia("(min-width: 768px)"));
+	const appRef = useRef<PixiApplication>(null);
 
 	useEffect(() => {
 		(async () => {
+			const isMobile = window.matchMedia("(max-width: 768px)").matches;
 			const { Application, Graphics, Text, } = await import("pixi.js");
 
 			const app = new Application();
+			appRef.current = app;
 
 			await app.init({ resizeTo: ref.current!, backgroundAlpha: 0, antialias: true });
 
@@ -247,6 +254,10 @@ export function BackgroundCanvas(): JSX.Element {
 				}
 			});
 
+			if (isMobile) {
+				app.canvas.style.opacity = "0";
+			}
+
 			createMobile(120, 11, "☆", -15);
 			createMobile(250, 22, "⁺☽", 25, 80);
 			createMobile(320, 16, "✩", 15);
@@ -257,12 +268,11 @@ export function BackgroundCanvas(): JSX.Element {
 		return () => {
 			Matter.World.clear(engine.current.world, false);
 			Matter.Engine.clear(engine.current);
+			appRef.current?.destroy(true, { children: true });
 		};
 	}, []);
 
-	return mediaQuery.matches ? (
+	return (
 		<div ref={ref} style={{ inset: 0, marginInline: "auto", position: "absolute", maxWidth: "1400px", overflowX: "visible", }}></div>
-	) : (
-		<></>
 	);
 }
