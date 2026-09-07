@@ -1,5 +1,19 @@
 # Welcome to React Router!
 
+## API workspace
+
+独立したEffect 4のHTTP APIは [`apps/api`](apps/api/README.md) にあります。
+フロントはこのルートのReact Router / Effect 3で、APIとは通常の `fetch` で通信します。
+
+```sh
+npm ci
+npm run dev:api       # API: http://localhost:8787
+npm run dev           # フロント（別ターミナル）
+```
+
+APIの検証: `npm run typecheck:api` / `npm run build:api`。
+API仕様: `http://localhost:8787/api/docs`。
+
 A modern, production-ready template for building full-stack React applications using React Router.
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
