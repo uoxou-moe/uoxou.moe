@@ -19,7 +19,9 @@
 		"effect": "4.0.0-rc.112"
 	},
 	"devDependencies": {
+		"@effect/sql-sqlite-node": "4.0.0-rc.112",
 		"@effect/vitest": "^4.0.0-rc.112",
+		"miniflare": "4.20260521.0",
 		"oxfmt": "0.66.0",
 		"oxlint": "1.81.0",
 		"typescript": "^5.8.3",
