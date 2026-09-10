@@ -1,11 +1,11 @@
 {
-  "$schema": "../../node_modules/wrangler/config-schema.json",
-  "name": "uoxou-api",
-  "main": "src/worker.ts",
-  "compatibility_date": "2026-05-23",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": { "enabled": true },
-  "vars": {
-    "ALLOWED_ORIGIN": "http://localhost:5173"
-  }
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "uoxou-api",
+	"main": "src/worker.ts",
+	"compatibility_date": "2026-05-23",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": { "enabled": true },
+	"vars": {
+		"ALLOWED_ORIGIN": "http://localhost:5173",
+	},
 }

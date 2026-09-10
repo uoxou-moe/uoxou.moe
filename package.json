@@ -13,7 +13,10 @@
     "cf-typegen": "wrangler types",
     "dev:api": "npm run dev --workspace @uoxou/api",
     "typecheck:api": "npm run typecheck --workspace @uoxou/api",
-    "build:api": "npm run build --workspace @uoxou/api"
+    "build:api": "npm run build --workspace @uoxou/api",
+    "lint:api": "npm run lint --workspace @uoxou/api",
+    "format:api": "npm run format --workspace @uoxou/api",
+    "format:check:api": "npm run format:check --workspace @uoxou/api"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.2.11",

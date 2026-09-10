@@ -8,9 +8,7 @@ const SystemLive = HttpApiBuilder.group(Api, "system", (handlers) =>
 );
 
 const Routes = Layer.mergeAll(
-	HttpApiBuilder.layer(Api, { openapiPath: "/api/openapi.json" }).pipe(
-		Layer.provide(SystemLive),
-	),
+	HttpApiBuilder.layer(Api, { openapiPath: "/api/openapi.json" }).pipe(Layer.provide(SystemLive)),
 	HttpApiSwagger.layer(Api, { path: "/api/docs" }),
 ).pipe(Layer.provide(HttpServer.layerServices));
 
