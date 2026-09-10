@@ -22,6 +22,8 @@ export default {
 		if (allowed) {
 			headers.set("Access-Control-Allow-Origin", origin);
 			headers.set("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+			headers.set("Access-Control-Allow-Headers", "Range");
+			headers.set("Access-Control-Expose-Headers", "Accept-Ranges, Content-Range");
 		}
 		return new Response(response.body, { status: response.status, headers });
 	},
