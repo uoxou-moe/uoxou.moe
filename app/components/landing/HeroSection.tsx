@@ -9,7 +9,7 @@ const UsagiCanvas = lazy(() => import("./HeroSectionCanvas").then(mod => ({ defa
 
 export function HeroSection({ className, ...props }: ComponentPropsWithRef<"div">): JSX.Element {
 	return (
-		<div {...props} className={cn("relative h-[calc(100vh-70px)] w-full bg-fluffy-50", className)}>
+		<div {...props} className={cn("paper-background relative h-[calc(100vh-70px)] w-full bg-fluffy-50", className)}>
 			<Suspense fallback={<div style={{ position: "absolute", inset: 0 }} />}>
 				<BackgroundCanvas />
 				<UsagiCanvas />
